@@ -1,13 +1,28 @@
 
 from django.db import models
+from datetime import datetime    
+
+class Category(models.Model):
+    description = models.CharField(max_length=1000)
+    name = models.CharField(max_length=40)
+
+    def __str__(self):
+        return f"{self.name}"
 
 class User(models.Model):
-    user_name = models.CharField(max_length=40)
+    name = models.CharField(max_length=40)
     register_date = models.DateTimeField(default=datetime.now, blank=True)
 
+    def __str__(self):
+        return f"{self.name}"
 
-class Horse(models.Model):
-     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-     breed = models.Charfield(max_length=40)
-     skill = models.IntegerField(default = 0)
-     date_of_birth = models.DateTimeField(default=datetime.now, blank=True)
+class Product(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    description = models.CharField(max_length=1000)
+    name = models.CharField(max_length=40)
+    inventory = models.IntegerField(default = 0)
+    price = models.IntegerField(default = 0)
+    creation_date = models.DateTimeField(default=datetime.now, blank=True)
+
+    def __str__(self):
+        return f"{self.id} - {self.name}"
