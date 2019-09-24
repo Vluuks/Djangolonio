@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -12,6 +13,21 @@ def index(request):
         "user": request.user
     }
     return render(request, "users/profile.html", context)
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return HttpResponseRedirect(reverse("index"))
+    else:
+        form = UserCreationForm()
+
+    return render(request, "users/signup.html", {'form': form})
 
 def login_view(request):
     username = request.POST["username"]
