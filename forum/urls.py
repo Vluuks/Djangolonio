@@ -1,0 +1,6 @@
+from . import views
+
+urlpatterns = [
+    path("", views.index, name="index"),
+    path("home", views.home_view, name="home")
+]

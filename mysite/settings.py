@@ -34,6 +34,7 @@ INSTALLED_APPS = [
 
     'someapp.apps.SomeappConfig',
     'users.apps.UsersConfig',
+    'forum.apps.ForumConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
