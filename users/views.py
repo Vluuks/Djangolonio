@@ -14,7 +14,7 @@ def index(request):
     }
     return render(request, "users/profile.html", context)
 
-def signup_view(request):
+def signup_view_test(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
