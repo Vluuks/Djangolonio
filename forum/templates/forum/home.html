@@ -1,0 +1,11 @@
+{% extends "users/standard.html" %}
+
+{% block body %}
+
+    <h1>Boards</h1>
+
+    {% for board in boards %}
+      {{ board.name }} <br>
+    {% endfor %}
+
+{% endblock %}
