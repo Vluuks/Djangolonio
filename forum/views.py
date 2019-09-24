@@ -3,14 +3,10 @@ from django.http import HttpResponse
 
 from .models import Board
 
+def index(request):
+    return HttpResponse("TEST!!")
+
 # Create your views here.
-def home(request):
+def home_view(request):
     boards = Board.objects.all()
-    boards_names = list()
-
-    for board in boards:
-        boards_names.append(board.name)
-
-    response_html = '<br>'.join(boards_names)
-
-    return HttpResponse(response_html)
+    return render(request, 'forum/home.html', {'boards': boards})
