@@ -31,10 +31,11 @@ def create_topic_view(request, board_id):
     except Board.DoesNotExist:
         raise Http404("Board does not exist")
 
-    # get user
-    # user = request.user
+    # check whether user is logged in 
+    if not request.user.is_authenticated:
+        return render(request, "users/login.html", {"message": None})
 
-    user = "Someone"
+    user = request.user
 
     if(request.method == 'POST'):
         form = NewTopicForm(request.POST)
@@ -49,7 +50,9 @@ def create_topic_view(request, board_id):
                 topic=topic,
                 created_by=user
             )
-            return redirect('forum/topics', pk=board.pk)
+
+            # can contain the name of the url, then also the required arguments 
+            return redirect('board_topics', board_id=board.pk)
 
     elif(request.method == 'GET'):
         form = NewTopicForm()
