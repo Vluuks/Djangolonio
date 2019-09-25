@@ -32,7 +32,9 @@ def create_topic_view(request, board_id):
         raise Http404("Board does not exist")
 
     # get user
-    user = User.objects.first()
+    # user = request.user
+
+    user = "Someone"
 
     if(request.method == 'POST'):
         form = NewTopicForm(request.POST)
@@ -47,9 +49,9 @@ def create_topic_view(request, board_id):
                 topic=topic,
                 created_by=user
             )
-            return redirect('board_topics', pk=board.pk)
+            return redirect('forum/topics', pk=board.pk)
 
     elif(request.method == 'GET'):
         form = NewTopicForm()
 
-    return render(request, 'new_topic.html', {'board': board, 'form': form})
+    return render(request, 'forum/new_topic.html', {'board': board, 'form': form})
