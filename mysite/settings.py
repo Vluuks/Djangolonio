@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
 
+    'homepage.apps.HomepageConfig',
     'someapp.apps.SomeappConfig',
     'users.apps.UsersConfig',
     'forum.apps.ForumConfig',
