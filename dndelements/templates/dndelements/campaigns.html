@@ -1,4 +1,4 @@
-{% extends "forum/standard.html" %}
+{% extends "dndelements/standard.html" %}
 
 {% block title %}
    Dnd Elements - {{ name }}
@@ -15,15 +15,18 @@
     <a href="/" class="btn btn-primary">New campaign</a>
   </div>
 
-  <div class="flex-container-wrap flex-horizontal">
+  <div class="flex-container flex-vertical">
 
     {% for campaign in data %}
 
         <div class="campaignblock">
             <h2>{{ campaign.name }}</h2>
             <p>{{ campaign.description }}</p>
-        </div>
 
+            {% for player in campaign.players.all %}
+              <span>test {{ player.name }} </span>
+            {% endfor %}
+        </div>
 
     {% endfor %}
 

@@ -45,6 +45,7 @@ class Player(models.Model):
 class Campaign(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=1000)
+    running = models.BooleanField(default=False)
     players = models.ManyToManyField(Player, blank=True, related_name="campaigns")
 
 
