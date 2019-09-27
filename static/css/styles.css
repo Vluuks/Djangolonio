@@ -57,6 +57,17 @@ h2{
     border-radius: 15px;
 }
 
+.divborder-active {
+  border-style: solid;
+  border-width: 10px;
+  border-color:#87b538;
+}
+
+.divborder-inactive {
+    border-style: solid;
+    border-color: red;
+}
+
 .campaignblock h2 {
     font-family: "Trebuchet MS";
     font-size: 30px;

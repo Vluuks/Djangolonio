@@ -1,0 +1,15 @@
+{% extends "dndelements/standard.html" %}
+
+{% block title %}
+   {{ campaign.name }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Boards</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'dnd_campaigns' %}">Campaigns</a></li>
+    <li class="breadcrumb-item active">{{ campaign.name }}</li>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

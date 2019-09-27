@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
     path("campaigns/", views.campaigns, name="dnd_campaigns"),
+    path("campaigns/<int:campaign_id>/", views.campaign_details, name="dnd_campaign_details"),
+
     path("characters/", views.characters, name="dnd_characters"),
     path("npcs/", views.npcs, name="dnd_npcs"),
     path("monsters/", views.monsters, name="dnd_monsters"),
