@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from pagelist import entries
+from .pagelist import entries
 
 # Create your views here.
 def index(request):
