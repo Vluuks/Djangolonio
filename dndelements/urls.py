@@ -1,0 +1,11 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("campaigns/", views.campaigns, name="dnd_campaigns"),
+    path("characters/", views.characters, name="dnd_characters"),
+    path("npcs/", views.npcs, name="dnd_npcs"),
+    path("monsters/", views.monsters, name="dnd_monsters"),
+    path("items/", views.items, name="dnd_items"),
+    path("locations/", views.locations, name="dnd_locations")
+]

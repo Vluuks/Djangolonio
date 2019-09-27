@@ -21,5 +21,7 @@ urlpatterns = [
     path("forum/", include("forum.urls")),
     path("users/", include("users.urls")),
     path('admin/', admin.site.urls),
-    path("someapp/", include("someapp.urls"))
+    path("dndelements/", include("dndelements.urls"))
+    # path("someapp/", include("someapp.urls"))
+    
 ]
