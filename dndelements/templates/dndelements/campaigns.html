@@ -24,7 +24,7 @@
             <p>{{ campaign.description }}</p>
 
             {% for player in campaign.players.all %}
-              <span>test {{ player.name }} </span>
+              <span class="campaign-playername">{{ player.name }}</span>
             {% endfor %}
         </div>
 
