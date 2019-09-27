@@ -1,0 +1,35 @@
+{% extends "forum/standard.html" %}
+
+{% block title %}
+   Dnd Elements - {{ name }}
+{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item active">{{ name }}</li>
+{% endblock %}
+
+{% block content %}
+
+  <div class="mb-4">
+    <a href="/" class="btn btn-primary">New campaign</a>
+  </div>
+
+  <div class="flex-container-wrap flex-horizontal">
+
+    {% for campaign in data %}
+
+        <div class="campaignblock">
+            <h2>{{ campaign.name }}</h2>
+            <p>{{ campaign.description }}</p>
+        </div>
+
+
+    {% endfor %}
+
+  </div>
+
+
+
+
+{% endblock %}

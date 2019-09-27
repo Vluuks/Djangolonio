@@ -1,8 +1,15 @@
 from django.shortcuts import render
+from .models import *
 
 # Viewing existing elements
 def campaigns(request):
-    return render(request, 'dndelements/campaigns.html')
+
+    context = {
+        "name" : "Campaigns",
+        "data" : Campaign.objects.all()
+    }
+
+    return render(request, 'dndelements/campaigns.html', context)
 
 def characters(request):
     return render(request, 'dndelements/characters.html')
