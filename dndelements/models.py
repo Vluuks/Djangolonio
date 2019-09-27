@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # class Bonus(models.Model):
@@ -16,24 +17,28 @@ from django.db import models
 #     price = models.IntegerField(default = 0)
 #     boni = 
 
-# class Race(models.Model):
-#     description = models.CharField(max_length=1000)
-#     name = models.CharField(max_length=40)
-#     age = models.IntegerField(default = 0)
-#     height = models.IntegerField(default = 0)
-#     weight = models.IntegerField(default = 0)
-#     size = models.CharField(max_length=40)
-#     speed = models.IntegerField(default = 0)
-#     vision = models.CharField(max_length=40)
-#     languages = models.CharField(max_length=40)
-#     skill_boni = models.CharField(max_length=40)
-#     ability_boni = models.CharField(max_length=40)
+class Race(models.Model):
+    description = models.CharField(max_length=1000)
+    name = models.CharField(max_length=40)
+    age = models.IntegerField(default = 0)
+    height = models.IntegerField(default = 0)
+    weight = models.IntegerField(default = 0)
+    size = models.CharField(max_length=40)
+    speed = models.IntegerField(default = 0)
+    vision = models.CharField(max_length=40)
+    languages = models.CharField(max_length=40)
+    skill_boni = models.CharField(max_length=40)
+    ability_boni = models.CharField(max_length=40)
 
+class Campaign(models.Model):
+    description = models.CharField(max_length=1000)
+    name = models.CharField(max_length=40)
+    users = models.ManyToManyField(User, blank=True, related_name="campaigns")
 
 class Player(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=1000)
-    race = models.ForeignKey(Race, on_delete=models.CASCADE, related_name="players"")
+    race = models.ForeignKey(Race, on_delete=models.CASCADE, related_name="players")
     age = models.IntegerField(default = 0)
     gender = models.CharField(max_length=40)
 
@@ -51,10 +56,7 @@ class NPC(models.Model):
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, related_name="npcs")
 
 
-class Campaign(models.Model):
-    description = models.CharField(max_length=1000)
-    name = models.CharField(max_length=40)
-    users = models.ManyToMany(User, blank=True, related_name="campaigns")
+
     
     # locations = models.IntegerField(default = 0)
     # npcs = models.IntegerField(default = 0)
