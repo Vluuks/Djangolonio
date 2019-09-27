@@ -18,8 +18,8 @@ from django.contrib.auth.models import User
 #     boni = 
 
 class Race(models.Model):
-    description = models.CharField(max_length=1000)
     name = models.CharField(max_length=40)
+    description = models.CharField(max_length=1000)
     age = models.IntegerField(default = 0)
     height = models.IntegerField(default = 0)
     weight = models.IntegerField(default = 0)
@@ -31,8 +31,8 @@ class Race(models.Model):
     ability_boni = models.CharField(max_length=40)
 
 class Campaign(models.Model):
-    description = models.CharField(max_length=1000)
     name = models.CharField(max_length=40)
+    description = models.CharField(max_length=1000)
     users = models.ManyToManyField(User, blank=True, related_name="campaigns")
 
 class Player(models.Model):
@@ -53,7 +53,8 @@ class NPC(models.Model):
     race = models.ForeignKey(Race, on_delete=models.CASCADE, related_name="npcs")
     age = models.IntegerField(default = 0)
     gender = models.CharField(max_length=40)
-    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, related_name="npcs")
+    status = models.CharField(max_length=40)
+    campaign = models.ForeignKey(Campaign, blank=True, on_delete=models.CASCADE, related_name="npcs")
 
 
 
