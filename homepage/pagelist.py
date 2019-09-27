@@ -1,12 +1,20 @@
 entries = [
 
     {
+        "name": "Account",
+        "url_name": "users/profile"
+    },
+    {
         "name": "Characters",
         "url_name": "dndelements/characters"
     },
     {
         "name": "Campaigns",
         "url_name": "dndelements/campaigns"
+    },
+    {
+        "name": "Encounters",
+        "url_name": "encounters/home"
     },
     {
         "name": "Items",
@@ -23,10 +31,6 @@ entries = [
     {
         "name": "Forum",
         "url_name": "forum/home"
-    },
-    {
-        "name": "Account",
-        "url_name": "users/profile"
     },
     {
         "name": "Planner",
