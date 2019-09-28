@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import Http404
 from .models import *
+from django.core import serializers
+
 
 # Viewing existing elements
 def campaigns(request):
@@ -40,7 +42,8 @@ def character_details(request, character_id):
         raise Http404("Character does not exist")
     
     context = {
-        "character" : character
+        "character" : character,
+        "statlist" : serializers.serialize( "python", [character.player_stats] )
     }
     return render(request, "dndelements/character_details.html", context)
 

@@ -113,3 +113,21 @@ body{
 .campaign-description{
     margin-top: 15px;
 }
+
+.statname {
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.statvalue {
+
+}
+
+.statlist {
+    padding: 10px;
+}
+
+.statlist ul {
+    list-style-type: none;
+    padding: 0;
+}

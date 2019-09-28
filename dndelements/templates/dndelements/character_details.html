@@ -1,1 +1,32 @@
-<h1>test test test</h1>
+{% extends "dndelements/standard.html" %}
+
+{% block title %}
+   {{ character.name }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'dnd_characters' %}">Characters</a></li>
+    <li class="breadcrumb-item active">{{ character.name }}</li>
+{% endblock %}
+
+{% block content %}
+
+    <div class="generalblock">
+        <h1>{{ character.name }}</h1>
+        <span class="tagspan">DnD version</span>
+
+        <div class="statlist">
+            <ul>
+            {% for instance in statlist %}
+                {% for field, value in instance.fields.items %}
+                    <li><span class="statname">{{ field }}</span> <span class="statvalue">{{ value }}</span></li>
+                {% endfor %}
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    
+
+{% endblock %}
