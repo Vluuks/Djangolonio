@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 from .models import *
 
 # Viewing existing elements
@@ -13,8 +14,6 @@ def campaigns(request):
 
 def campaign_details(request, campaign_id):
 
-    print("testeroni" + str(campaign_id))
-
     try:
         campaign = Campaign.objects.get(pk=campaign_id)
     except Campaign.DoesNotExist:
@@ -26,7 +25,30 @@ def campaign_details(request, campaign_id):
     return render(request, "dndelements/campaign_details.html", context)
 
 def characters(request):
-    return render(request, 'dndelements/characters.html')
+    
+    context = {
+        "name" : "Characters",
+        "data" : Player.objects.all()
+    }
+    return render(request, 'dndelements/characters.html', context)
+
+
+def character_details(request, character_id):
+    try:
+        character = Player.objects.get(pk=character_id)
+    except Player.DoesNotExist:
+        raise Http404("Character does not exist")
+    
+    context = {
+        "character" : character
+    }
+    return render(request, "dndelements/character_details.html", context)
+
+
+
+
+
+
 
 def npcs(request):
     return render(request, 'dndelements/npcs.html')

@@ -1,0 +1,32 @@
+{% extends "dndelements/standard.html" %}
+
+{% block title %}
+   Dnd Elements - {{ name }}
+{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item active">{{ name }}</li>
+{% endblock %}
+
+{% block content %}
+
+  <div class="mb-4">
+    <a href="/" class="btn btn-primary">New character</a>
+  </div>
+
+  <div class="flex-container flex-vertical">
+
+    {% for character in data %}
+
+        <div class="campaignblock">
+            <a href="{% url 'dnd_character_details' character.pk %}"><h2>{{ character.name }}</h2></a>
+            <p>{{ character.race.name }}</p>
+            
+        </div>
+
+    {% endfor %}
+
+  </div>
+
+{% endblock %}

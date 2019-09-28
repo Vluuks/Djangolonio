@@ -12,6 +12,15 @@ class ItemBonus(models.Model):
     score = models.IntegerField(default = 0)
 
 
+
+class StatList(models.Model):
+    charisma = models.IntegerField(default = 0)
+    wisdom = models.IntegerField(default = 0)
+    intelligence = models.IntegerField(default = 0)
+    strength = models.IntegerField(default = 0)
+    constitution = models.IntegerField(default = 0)
+    dexterity = models.IntegerField(default = 0)
+
 class Item(models.Model):
     description = models.CharField(max_length=1000)
     name = models.CharField(max_length=40)
@@ -45,7 +54,8 @@ class Player(models.Model):
     level = models.IntegerField(default = 1)
     experience = models.IntegerField(default = 0)
     gender = models.CharField(max_length=40)
-    player_class = models.ForeignKey(PlayerClass, on_delete=models.CASCADE, related_name="players", blank=True)
+    player_class = models.ForeignKey(PlayerClass, on_delete=models.CASCADE, related_name="players", null=True)
+    player_stats = models.ForeignKey(StatList, on_delete=models.CASCADE, null=True)
 
     # can only be one owner ?? i dont understand this one to many many to one thing anymore
     # so every time you inser t aplayer, you have to pick 1 owner, but you can do 2 times a player with the same owner
@@ -62,15 +72,6 @@ class Campaign(models.Model):
     players = models.ManyToManyField(Player, blank=True, related_name="campaigns")
 
 
-class StatList(models.Model):
-    character = models.ForeignKey(Player, on_delete=models.CASCADE)
-
-    charisma = models.IntegerField(default = 0)
-    wisdom = models.IntegerField(default = 0)
-    intelligence = models.IntegerField(default = 0)
-    strength = models.IntegerField(default = 0)
-    constitution = models.IntegerField(default = 0)
-    dexterity = models.IntegerField(default = 0)
 
 
 
