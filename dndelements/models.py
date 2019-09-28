@@ -30,12 +30,21 @@ class Race(models.Model):
     skill_boni = models.CharField(max_length=40)
     ability_boni = models.CharField(max_length=40)
 
+
+class PlayerClass(models.Model):
+    name = models.CharField(max_length=40)
+    description = models.CharField(max_length=1000)
+    origin = models.CharField(max_length=40)
+
 class Player(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=1000)
     race = models.ForeignKey(Race, on_delete=models.CASCADE, related_name="players")
     age = models.IntegerField(default = 0)
+    level = models.IntegerField(default = 1)
+    experience = models.IntegerField(default = 0)
     gender = models.CharField(max_length=40)
+    player_class = models.ForeignKey(PlayerClass, on_delete=models.CASCADE, related_name="players")
 
     # can only be one owner ?? i dont understand this one to many many to one thing anymore
     # so every time you inser t aplayer, you have to pick 1 owner, but you can do 2 times a player with the same owner
@@ -45,7 +54,10 @@ class Player(models.Model):
 class Campaign(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=1000)
+
     running = models.BooleanField(default=False)
+    rpg_variant = models.CharField(max_length=40, blank=True)
+
     players = models.ManyToManyField(Player, blank=True, related_name="campaigns")
 
 

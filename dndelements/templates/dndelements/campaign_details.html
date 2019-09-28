@@ -12,4 +12,31 @@
 
 {% block content %}
 
+    <div class="generalblock">
+        <h1>{{ campaign.name }}</h1>
+        {% if campaign.running %}
+            <span class="tagspan">This campaign is running!</span>
+        {% endif %}
+
+        <p class="campaign-description">{{ campaign.description }}</p>
+        
+
+        <h2>Players</h2>
+        <p>
+            <ul>
+                {% for player in campaign.players.all %}
+                    <li> {{ player.name }} ({{ player.owner}}) </li>
+                {% endfor %}
+            </ul>
+        </p>
+
+        <h2>Items</h2>
+        <p>....</p>
+
+        <h2>NPCs</h2>
+        <p>...</p>
+    </div>
+
+    
+
 {% endblock %}
