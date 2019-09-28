@@ -14,8 +14,10 @@
 
     <div class="generalblock">
         <h1>{{ character.name }}</h1>
+        <p class="subtitle">lvl {{ character.level }} {{ character.race.name }} {{ character.player_class.name }}</p>
         <span class="tagspan">DnD version</span>
-
+    
+        <h2>Ability scores</h2>
         <div class="statlist">
             <ul>
 
@@ -24,6 +26,8 @@
             {% endfor %}
             </ul>
         </div>
+
+        <h2>Skills</h2>
     </div>
 
     

@@ -41,8 +41,6 @@ def character_details(request, character_id):
         character = Player.objects.get(pk=character_id)
     except Player.DoesNotExist:
         raise Http404("Character does not exist")
-
-
     
     # calculate modifiers
     stats_dict = {}
