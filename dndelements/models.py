@@ -2,13 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-# class Bonus(models.Model):
-#     ability = models.CharField(max_length=40)
-#     score = models.IntegerField(default = 0)
+class Bonus(models.Model):
+    ability = models.CharField(max_length=40)
+    score = models.IntegerField(default = 0)
 
-# class ItemBonus(models.Model):
-#     ability = models.CharField(max_length=40)
-#     score = models.IntegerField(default = 0)
+
+class ItemBonus(models.Model):
+    ability = models.CharField(max_length=40)
+    score = models.IntegerField(default = 0)
 
 
 class Item(models.Model):
@@ -60,6 +61,16 @@ class Campaign(models.Model):
 
     players = models.ManyToManyField(Player, blank=True, related_name="campaigns")
 
+
+class StatList(models.Model):
+    character = models.ForeignKey(Player, on_delete=models.CASCADE)
+
+    charisma = models.IntegerField(default = 0)
+    wisdom = models.IntegerField(default = 0)
+    intelligence = models.IntegerField(default = 0)
+    strength = models.IntegerField(default = 0)
+    constitution = models.IntegerField(default = 0)
+    dexterity = models.IntegerField(default = 0)
 
 
 
