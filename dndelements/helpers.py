@@ -1,7 +1,9 @@
 from math import floor, ceil
 
-def calculate_modifier_4e(score):
+def calculate_modifier(score):
 
+    print(score)
+    
     if score == 1:
         return -5
 

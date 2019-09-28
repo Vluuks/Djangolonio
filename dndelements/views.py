@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import Http404
 from .models import *
 from django.core import serializers
+from .helpers import calculate_modifier
 
 
 # Viewing existing elements
@@ -40,10 +41,27 @@ def character_details(request, character_id):
         character = Player.objects.get(pk=character_id)
     except Player.DoesNotExist:
         raise Http404("Character does not exist")
+
+
+    
+    # calculate modifiers
+    stats_dict = {}
+
+    print("KIJK HIER JONGE")
+    serialized = serializers.serialize("python", [character.player_stats])
+    print(serialized)
+    print("------------------")
+    print(serialized[0]['fields'])
+    
+    for i, (field, value) in enumerate(serialized[0]['fields'].items()):
+        stats_dict[field] = [value, calculate_modifier(value)]
+    
+    print(stats_dict)
     
     context = {
         "character" : character,
-        "statlist" : serializers.serialize( "python", [character.player_stats] )
+        "statlist" : serializers.serialize("python", [character.player_stats] ),
+        "statlist_modifiers" : stats_dict
     }
     return render(request, "dndelements/character_details.html", context)
 

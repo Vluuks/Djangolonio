@@ -18,10 +18,9 @@
 
         <div class="statlist">
             <ul>
-            {% for instance in statlist %}
-                {% for field, value in instance.fields.items %}
-                    <li><span class="statname">{{ field }}</span> <span class="statvalue">{{ value }}</span></li>
-                {% endfor %}
+
+            {% for field, value in statlist_modifiers.items %}
+                <li><span class="statname">{{ field }}</span> <span class="statvalue">{{ value.0 }} ({% if value.1 > 0 %}+{% endif %}{{value.1}})</span></li>
             {% endfor %}
             </ul>
         </div>
