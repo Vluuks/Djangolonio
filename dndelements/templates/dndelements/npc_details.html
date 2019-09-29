@@ -1,0 +1,23 @@
+{% extends "dndelements/standard.html" %}
+
+{% block title %}
+   {{ npc.name }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'dnd_npcs' %}">npcs</a></li>
+    <li class="breadcrumb-item active">{{ npc.name }}</li>
+{% endblock %}
+
+{% block content %}
+
+    <div class="generalblock">
+        <h1>{{ npc.name }}</h1>
+        <p class="subtitle">lvl {{ npc.level }} {{ npc.race.name }} {{ npc.player_class.name }}</p>
+    
+    </div>
+
+    
+
+{% endblock %}
