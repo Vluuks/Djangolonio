@@ -58,6 +58,7 @@ def character_details(request, character_id):
     return render(request, "dndelements/character_details.html", context)
 
 
+
 def npcs(request):
 
     context = {
@@ -65,6 +66,9 @@ def npcs(request):
         "data" : NPC.objects.all()
     }
     return render(request, 'dndelements/npcs.html', context)
+
+def npcs_new(request):
+    return render(request, 'dndelements/add_npc.html')
 
 def npc_details(request, npc_id):
 

@@ -10,7 +10,7 @@ urlpatterns = [
     
     path("npcs/", views.npcs, name="dnd_npcs"),
     path("npcs/<int:npc_id>/", views.npc_details, name="dnd_npc_details"),
-
+    path("npcs/new/", views.npcs_new, name="dnd_npc_new"),
 
     path("monsters/", views.monsters, name="dnd_monsters"),
     path("items/", views.items, name="dnd_items"),
