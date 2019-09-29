@@ -1,1 +1,17 @@
-<h1>test test test</h1> 
+{% extends "dndelements/standard.html" %}
+
+{% block title %}
+   Add new NPC
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'dnd_npcs' %}">NPCs</a></li>
+    <li class="breadcrumb-item active">Add new NPC</li>
+{% endblock %}
+
+{% block content %}
+
+    <p>form todo</p>
+
+{% endblock %}

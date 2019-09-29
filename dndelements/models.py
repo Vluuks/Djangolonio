@@ -72,6 +72,11 @@ class Campaign(models.Model):
     players = models.ManyToManyField(Player, blank=True, related_name="campaigns")
 
 
+class Location(models.Model):
+    name = models.CharField(max_length=40)
+    description = models.CharField(max_length=1000)
+    campaign = models.ForeignKey(Campaign, null=True, on_delete=models.CASCADE, related_name="locations")
+
 
 
 
@@ -81,7 +86,8 @@ class NPC(models.Model):
     age = models.IntegerField(default = 0)
     gender = models.CharField(max_length=40)
     status = models.CharField(max_length=40, default="Alive")
-    campaign = models.ForeignKey(Campaign, blank=True, on_delete=models.CASCADE, related_name="npcs")
+    location = models.ForeignKey(Location, null=True, on_delete=models.CASCADE, related_name="npcs")
+    campaign = models.ForeignKey(Campaign, null=True, on_delete=models.CASCADE, related_name="npcs")
 
 
 
