@@ -9,6 +9,9 @@ urlpatterns = [
     path("characters/<int:character_id>/", views.character_details, name="dnd_character_details"),
     
     path("npcs/", views.npcs, name="dnd_npcs"),
+    path("npcs/<int:npc_id>/", views.npc_details, name="dnd_npc_details"),
+
+
     path("monsters/", views.monsters, name="dnd_monsters"),
     path("items/", views.items, name="dnd_items"),
     path("locations/", views.locations, name="dnd_locations")

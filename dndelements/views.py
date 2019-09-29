@@ -27,6 +27,7 @@ def campaign_details(request, campaign_id):
     }
     return render(request, "dndelements/campaign_details.html", context)
 
+
 def characters(request):
     
     context = {
@@ -44,18 +45,11 @@ def character_details(request, character_id):
     
     # calculate modifiers
     stats_dict = {}
-
-    print("KIJK HIER JONGE")
     serialized = serializers.serialize("python", [character.player_stats])
-    print(serialized)
-    print("------------------")
-    print(serialized[0]['fields'])
-    
+
     for i, (field, value) in enumerate(serialized[0]['fields'].items()):
         stats_dict[field] = [value, calculate_modifier(value)]
-    
-    print(stats_dict)
-    
+  
     context = {
         "character" : character,
         "statlist" : serializers.serialize("python", [character.player_stats] ),
@@ -64,13 +58,31 @@ def character_details(request, character_id):
     return render(request, "dndelements/character_details.html", context)
 
 
-
-
-
-
-
 def npcs(request):
-    return render(request, 'dndelements/npcs.html')
+
+    context = {
+        "name" : "NPCs",
+        "data" : NPC.objects.all()
+    }
+    return render(request, 'dndelements/npcs.html', context)
+
+def npc_details(request, npc_id):
+
+    try:
+        npc = NPC.objects.get(pk=npc_id)
+    except NPC.DoesNotExist:
+        raise Http404("NPC does not exist")
+
+    context = {
+        "npc" : npc
+    }
+    return render(request, 'dndelements/npc_details.html')
+
+
+
+
+
+
 
 def monsters(request):
     return render(request, 'dndelements/monsters.html')
