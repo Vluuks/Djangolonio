@@ -1,12 +1,13 @@
+var app;
 window.onload = function(){
     console.log("test test");
 
-    var app = new Vue({
+    app = new Vue({
         delimiters: ['[[', ']]'],
         el: '#app',
         data: {
             message: 'Hello Vue!',
-            npcs: []
+            npcs: ['safafsafasf']
         },
         methods: {
             greet: function(name) {

@@ -69,6 +69,7 @@ def npcs(request):
         "data" : NPC.objects.all(),
         "npcs_json" :  serializers.serialize('json', NPC.objects.all())
     }
+    logging.debug(serializers.serialize('json', NPC.objects.all()))
     return render(request, 'dndelements/npcs.html', context)
 
 def npcs_new(request):
