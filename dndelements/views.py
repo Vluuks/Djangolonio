@@ -75,6 +75,10 @@ def npcs_new(request):
         form = NewNPCForm(request.POST)
         
         if form.is_valid():
+            new_npc = form.save()
+            
+
+
             return redirect('dnd_npcs')
 
     form = NewNPCForm()

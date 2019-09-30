@@ -11,7 +11,8 @@ class ItemBonus(models.Model):
     ability = models.CharField(max_length=40)
     score = models.IntegerField(default = 0)
 
-
+class Alignment(models.Model):
+    name = models.CharField(max_length=40)
 
 class StatList(models.Model):
     charisma = models.IntegerField(default = 0)
@@ -86,6 +87,7 @@ class NPC(models.Model):
     age = models.IntegerField(default = 0)
     gender = models.CharField(max_length=40)
     status = models.CharField(max_length=40, default="Alive")
+    alignment = models.ForeignKey(Alignment, null=True, on_delete=models.CASCADE, related_name="npcs")
     location = models.ForeignKey(Location, null=True, on_delete=models.CASCADE, related_name="npcs")
     campaign = models.ForeignKey(Campaign, null=True, on_delete=models.CASCADE, related_name="npcs")
 
