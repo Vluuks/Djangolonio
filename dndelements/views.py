@@ -67,7 +67,7 @@ def npcs(request):
     context = {
         "name" : "NPCs",
         "data" : NPC.objects.all(),
-        "npcs_json" : json.dumps(NPC.objects.all())
+        "npcs_json" :  serializers.serialize('json', NPC.objects.all())
     }
     return render(request, 'dndelements/npcs.html', context)
 
