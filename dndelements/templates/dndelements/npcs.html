@@ -1,11 +1,5 @@
 {% extends "dndelements/standard.html" %}
 
-<script type='text/javascript'>
-  
-  var x = 4;
-  var npcs_j = {{ npcs_json|safe }};
-  
-</script>
 
 {% block title %}
    Dnd Elements - {{ name }}
@@ -16,7 +10,16 @@
   <li class="breadcrumb-item active">{{ name }}</li>
 {% endblock %}
 
+
 {% block content %}
+
+<script type='text/javascript'>
+  
+  var x = 4;
+  var npcs_j = '{{ npcs_json|safe }}';
+  alert("TESTTT")
+  
+</script>
 
   <div class="mb-4">
     <a href="{% url 'dnd_npc_new' %}" class="btn btn-primary">New NPC</a>
