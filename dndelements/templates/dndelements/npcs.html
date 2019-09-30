@@ -10,16 +10,24 @@
   <li class="breadcrumb-item active">{{ name }}</li>
 {% endblock %}
 
-
-{% block content %}
+{% block script %}
 
 <script type='text/javascript'>
   
-  var x = 4;
-  var npcs_j = '{{ npcs_json|safe }}';
-  alert("TESTTT")
-  
+  window.onload = function(){
+
+    initVue();
+    var npcs_j = '{{ npcs_json|safe }}';
+    console.log(npcs_j);
+    Vue.set(app, 'npcs', npcs_j);
+  }
 </script>
+
+{% endblock %}
+
+{% block content %}
+
+
 
   <div class="mb-4">
     <a href="{% url 'dnd_npc_new' %}" class="btn btn-primary">New NPC</a>

@@ -1,5 +1,5 @@
 var app;
-window.onload = function(){
+function initVue() {
     console.log("test test");
 
     app = new Vue({
