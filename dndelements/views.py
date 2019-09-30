@@ -72,16 +72,27 @@ def npcs(request):
 def npcs_new(request):
 
     if(request.method == 'POST'):
-        print("FORM TEST TEST TEST")
         form = NewNPCForm(request.POST)
         
         if form.is_valid():
             name = form.cleaned_data["name"]
             alignment = form.cleaned_data["alignment"]
             race = form.cleaned_data["race"]
+            status = form.cleaned_data["status"]
+            gender = form.cleaned_data["gender"]
+            age = form.cleaned_data["age"]
 
             logging.debug(race)
 
+            npc = NPC(
+                name=name,
+                aligment=aligment,
+                race=race,
+                status=status,
+                gender=gender,
+                age=age
+            )
+            npc.save()
 
             return redirect('dnd_npcs')
 
