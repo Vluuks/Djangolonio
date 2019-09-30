@@ -1,5 +1,9 @@
 {% extends "dndelements/standard.html" %}
 
+<script type='text/javascript'>
+  var npcs = {{ npcs_json|safe }};
+</script>
+
 {% block title %}
    Dnd Elements - {{ name }}
 {% endblock %}
@@ -16,6 +20,8 @@
   </div>
 
   <div class="flex-container flex-vertical">
+
+    [[ npcs ]]
 
     {% for npc in data %}
 

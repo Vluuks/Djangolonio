@@ -5,6 +5,7 @@
     <title>{% block title %}Default{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="{% static 'scripts/main.js' %}"></script>
   </head>
 
@@ -16,7 +17,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container" id="app">
       <ol class="breadcrumb my-4">
         {% block breadcrumb %}
         {% endblock %}

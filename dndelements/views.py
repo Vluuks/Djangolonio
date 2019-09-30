@@ -5,6 +5,7 @@ from django.core import serializers
 from .helpers import calculate_modifier
 from .forms import NewNPCForm
 import logging
+import json
 
 
 # Viewing existing elements
@@ -65,7 +66,8 @@ def npcs(request):
 
     context = {
         "name" : "NPCs",
-        "data" : NPC.objects.all()
+        "data" : NPC.objects.all(),
+        "npcs_json" : json.dumps(NPC.objects.all())
     }
     return render(request, 'dndelements/npcs.html', context)
 
