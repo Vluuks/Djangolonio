@@ -86,7 +86,7 @@ def npcs_new(request):
 
             npc = NPC(
                 name=name,
-                aligment=aligment,
+                alignment=alignment,
                 race=race,
                 status=status,
                 gender=gender,
