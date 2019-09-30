@@ -20,8 +20,8 @@
     {% for npc in data %}
 
         <div class="campaignblock">
-            <a href="{% url 'dnd_npc_details' npc.pk %}"><h1>{{ npc.name }}</h1></a>
-            <p class="subtitle">lvl {{ npc.level }} {{ npc.race.name }} {{ npc.player_class.name }}</p>
+            <a href="{% url 'dnd_npc_details' npc.pk %}"><h2>{{ npc.name }}</h2></a>
+            <p class="subtitle">{{ npc.race.name }} {{ npc.player_class.name }}</p>
             <p>Location</p>
             <p>Campaign</p>
 
