@@ -4,6 +4,7 @@ from .models import *
 from django.core import serializers
 from .helpers import calculate_modifier
 from .forms import NewNPCForm
+import logging
 
 
 # Viewing existing elements
@@ -75,8 +76,11 @@ def npcs_new(request):
         form = NewNPCForm(request.POST)
         
         if form.is_valid():
-            new_npc = form.save()
-            
+            name = form.cleaned_data["name"]
+            alignment = form.cleaned_data["alignment"]
+            race = form.cleaned_data["race"]
+
+            logging.debug(race)
 
 
             return redirect('dnd_npcs')
