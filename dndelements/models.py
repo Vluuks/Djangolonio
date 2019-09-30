@@ -6,13 +6,22 @@ class Bonus(models.Model):
     ability = models.CharField(max_length=40)
     score = models.IntegerField(default = 0)
 
+    def __str__(self):
+        return self.ability
+
 
 class ItemBonus(models.Model):
     ability = models.CharField(max_length=40)
     score = models.IntegerField(default = 0)
 
+    def __str__(self):
+        return self.ability 
+
 class Alignment(models.Model):
     name = models.CharField(max_length=40)
+
+    def __str__(self):
+        return self.name
 
 class StatList(models.Model):
     charisma = models.IntegerField(default = 0)
@@ -28,6 +37,9 @@ class Item(models.Model):
     price = models.IntegerField(default = 0)
     effects = models.CharField(max_length=1000)
 
+    def __str__(self):
+        return self.name
+
 class Race(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=1000)
@@ -41,11 +53,16 @@ class Race(models.Model):
     skill_boni = models.CharField(max_length=40)
     ability_boni = models.CharField(max_length=40)
 
+    def __str__(self):
+        return self.name
 
 class PlayerClass(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=1000)
     origin = models.CharField(max_length=40)
+
+    def __str__(self):
+        return self.name
 
 class Player(models.Model):
     name = models.CharField(max_length=40)
@@ -62,6 +79,8 @@ class Player(models.Model):
     # so every time you inser t aplayer, you have to pick 1 owner, but you can do 2 times a player with the same owner
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="players")
 
+    def __str__(self):
+        return self.name
 
 class Campaign(models.Model):
     name = models.CharField(max_length=40)
@@ -72,13 +91,16 @@ class Campaign(models.Model):
 
     players = models.ManyToManyField(Player, blank=True, related_name="campaigns")
 
+    def __str__(self):
+        return self.name
 
 class Location(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=1000)
     campaign = models.ForeignKey(Campaign, null=True, on_delete=models.CASCADE, related_name="locations")
 
-
+    def __str__(self):
+        return self.name
 
 
 class NPC(models.Model):
@@ -91,7 +113,8 @@ class NPC(models.Model):
     location = models.ForeignKey(Location, null=True, on_delete=models.CASCADE, related_name="npcs")
     campaign = models.ForeignKey(Campaign, null=True, on_delete=models.CASCADE, related_name="npcs")
 
-
+    def __str__(self):
+        return self.name
 
     
     # locations = models.IntegerField(default = 0)
