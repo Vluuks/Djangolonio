@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import Http404
 from .models import *
 from django.core import serializers
@@ -69,6 +69,13 @@ def npcs(request):
     return render(request, 'dndelements/npcs.html', context)
 
 def npcs_new(request):
+
+    if(request.method == 'POST'):
+        print("FORM TEST TEST TEST")
+        form = NewNPCForm(request.POST)
+        
+        if form.is_valid():
+            return redirect('dnd_npcs')
 
     form = NewNPCForm()
     context = { 'form': form }
