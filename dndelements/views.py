@@ -3,6 +3,7 @@ from django.http import Http404
 from .models import *
 from django.core import serializers
 from .helpers import calculate_modifier
+from .forms import NewNPCForm
 
 
 # Viewing existing elements
@@ -68,7 +69,11 @@ def npcs(request):
     return render(request, 'dndelements/npcs.html', context)
 
 def npcs_new(request):
-    return render(request, 'dndelements/add_npc.html')
+
+    form = NewNPCForm()
+    context = { 'form': form }
+
+    return render(request, 'dndelements/add_npc.html', context)
 
 def npc_details(request, npc_id):
 
