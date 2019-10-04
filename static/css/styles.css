@@ -1,8 +1,21 @@
+/* background-color: #877254; */
+
 body{
 	font-family: "Arial";
 	height: inherit !important;
     margin-top: 0;
     padding: 40px;
+    background-color: #302516;
+}
+
+a {
+    color: #FFFFFF;
+}
+
+a:hover{
+    color: #87b538;
+    transition-duration: 2ms;
+    text-decoration: none;
 }
 
 .flex-container{
@@ -26,7 +39,7 @@ body{
 .urlblock {
     width: 300px;
     height: 300px;
-    background-color: #d3d3d3;
+    background-color: #877254;
     margin: 10px;
     padding: 20px;
     border-radius: 15px;
@@ -39,10 +52,18 @@ body{
     font-weight: bolder;
 }
 
+.block {
+    background-color: #877254;
+    box-shadow: 2px 2px black;
+}
+
+.block:hover {
+    box-shadow: 2px 2px white;
+}
+
 .campaignblock {
     width: 700px;
     height: 200px;
-    background-color: #d3d3d3;
     margin-left: 0px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -79,7 +100,6 @@ body{
 
 .generalblock {
     width: 100%;
-    background-color: #d3d3d3;
     margin-left: 0px;
     margin-top: 10px;
     margin-bottom: 10px;

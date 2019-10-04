@@ -19,7 +19,7 @@
 
     {% for campaign in data %}
 
-        <div class="campaignblock {% if campaign.running %} divborder-active {% endif %}">
+        <div class="block campaignblock {% if campaign.running %} divborder-active {% endif %}">
             <a href="{% url 'dnd_campaign_details' campaign.pk %}"><h2>{{ campaign.name }}</h2></a>
             <p>{{ campaign.description }}</p>
 

@@ -19,7 +19,7 @@
 
     {% for character in data %}
 
-        <div class="campaignblock">
+        <div class="block campaignblock">
             <a href="{% url 'dnd_character_details' character.pk %}"><h1>{{ character.name }}</h1></a>
             <p class="subtitle">lvl {{ character.level }} {{ character.race.name }} {{ character.player_class.name }}</p>
 
