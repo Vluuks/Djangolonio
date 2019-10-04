@@ -17,4 +17,11 @@ class NewNPCForm(forms.Form):
     alignment = forms.ModelChoiceField(queryset=Alignment.objects.all())
 
 
-
+class NewCharacterForm(forms.Form):
+    id = forms.IntegerField(required=False, widget=forms.HiddenInput())
+    name = forms.CharField(label='Name', max_length=40)
+    race = forms.ModelChoiceField(queryset=Race.objects.all())
+    player_class = forms.ModelChoiceField(queryset=PlayerClass.objects.all())
+    gender = forms.CharField(label='Gender', max_length=40)
+    age = forms.IntegerField(label='age')
+    alignment = forms.ModelChoiceField(queryset=Alignment.objects.all())

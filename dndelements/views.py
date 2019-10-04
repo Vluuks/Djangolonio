@@ -3,7 +3,7 @@ from django.http import Http404
 from .models import *
 from django.core import serializers
 from .helpers import calculate_modifier
-from .forms import NewNPCForm
+from .forms import *
 import logging
 import json
 
@@ -61,7 +61,11 @@ def character_details(request, character_id):
     return render(request, "dndelements/character_details.html", context)
 
 def character_new(request):
-    return render(request, "dndelements/add_character.html")
+
+    form = NewCharacterForm()
+    context = { 'form': form }
+
+    return render(request, "dndelements/add_character.html", context)
 
 def npcs(request):
 

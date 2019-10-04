@@ -1,1 +1,21 @@
-<h1> TEST </h1>
+{% extends "dndelements/standard.html" %}
+
+{% block title %}
+   Add new NPC
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'dnd_characters' %}">Characters</a></li>
+    <li class="breadcrumb-item active">Add new Character</li>
+{% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}
