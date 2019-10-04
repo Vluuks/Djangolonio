@@ -60,7 +60,8 @@ def character_details(request, character_id):
     }
     return render(request, "dndelements/character_details.html", context)
 
-
+def character_new(request):
+    return render(request, "dndelements/add_character.html")
 
 def npcs(request):
 
